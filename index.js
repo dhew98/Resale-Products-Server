@@ -38,6 +38,13 @@ async function run() {
             res.send(users);
         });
 
+        app.get('/buyers', async (req, res) => {
+            const query = { role: 'Buyer' }
+            const cursor = userCollection.find(query);
+            const users = await cursor.toArray();
+            res.send(users);
+        });
+
         app.get('/product', async (req, res) => {
             const query = {}
             const cursor = productsCollection.find(query);
