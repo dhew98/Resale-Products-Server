@@ -25,6 +25,12 @@ async function run() {
 
 
 
+        app.get('/category', async (req, res) => {
+            const query = {}
+            const cursor = categoryCollection.find(query).sort({ _id: -1 });
+            const categories = await cursor.toArray();
+            res.send(categories);
+        });
         app.get('/users', async (req, res) => {
             const query = {}
             const cursor = userCollection.find(query);
@@ -100,7 +106,7 @@ async function run() {
         app.post('/products', async (req, res) => {
             const review = req.body;
             const product = await productsCollection.insertOne(review);
-            res.send(product);
+            res.send(booked);
         });
 
 
