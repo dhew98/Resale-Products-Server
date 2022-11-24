@@ -31,11 +31,18 @@ async function run() {
             const categories = await cursor.toArray();
             res.send(categories);
         });
-        app.get('/users', async (req, res) => {
-            const query = {}
+        app.get('/sellers', async (req, res) => {
+            const query = { role: 'Seller' }
             const cursor = userCollection.find(query);
             const users = await cursor.toArray();
             res.send(users);
+        });
+
+        app.get('/product', async (req, res) => {
+            const query = {}
+            const cursor = productsCollection.find(query);
+            const products = await cursor.toArray();
+            res.send(products);
         });
 
         // app.get('/services', async (req, res) => {
