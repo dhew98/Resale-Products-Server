@@ -25,11 +25,11 @@ async function run() {
 
 
 
-        app.get('/category', async (req, res) => {
+        app.get('/users', async (req, res) => {
             const query = {}
-            const cursor = categoryCollection.find(query).sort({ _id: -1 });
-            const categories = await cursor.toArray();
-            res.send(categories);
+            const cursor = userCollection.find(query);
+            const users = await cursor.toArray();
+            res.send(users);
         });
 
         // app.get('/services', async (req, res) => {
