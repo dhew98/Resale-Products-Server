@@ -52,7 +52,7 @@ async function run() {
         app.get('/products', async (req, res) => {
             const email = req.query.email;
             const query = { email: email };
-            console.log(email);
+
             const products = await productsCollection.find(query).toArray();
             res.send(products);
         })
