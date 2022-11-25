@@ -124,7 +124,7 @@ async function run() {
         app.post('/products', async (req, res) => {
             const review = req.body;
             const product = await productsCollection.insertOne(review);
-            res.send(booked);
+            res.send(product);
         });
 
 
