@@ -139,13 +139,14 @@ async function run() {
         app.post('/advertise', async (req, res) => {
             const review = req.body;
 
-            const product_name = review.product_name;
-            const query = { product_name };
+            const name = review.name;
+            const query = { name };
+            console.log(name);
             const found = await advertiseCollection.findOne(query);
             if (found) {
             }
             else {
-                const result = await advertiseCollection.insertOne(advertise);
+                const result = await advertiseCollection.insertOne(review);
                 res.send(result);
             }
 
@@ -184,47 +185,17 @@ async function run() {
 
         app.post('/user', async (req, res) => {
             const review = req.body;
+            console.log(review);
             const name = review.name;
             const query = { name };
             const found = await userCollection.findOne(query);
             if (found) {
             }
             else {
-                const result = await userCollection.insertOne(advertise);
+                const result = await userCollection.insertOne(review);
                 res.send(result);
             }
         });
-
-
-
-
-        // app.delete('/reviews/:id', async (req, res) => {
-        //     const id = req.params.id;
-        //     const query = { _id: ObjectId(id) };
-        //     const result = await reviewCollection.deleteOne(query);
-        //     res.send(result);
-        // })
-
-
-        // app.patch('/reviews/:id', async (req, res) => {
-        //     const id = req.params.id;
-        //     const message = req.body.message
-        //     console.log(message)
-        //     const query = { _id: ObjectId(id) }
-        //     const updatedDoc = {
-        //         $set: {
-        //             message: message
-        //         }
-        //     }
-        //     const result = await reviewCollection.updateOne(query, updatedDoc);
-        //     res.send(result);
-        // })
-
-        // // app.post('/orders', async (req, res) => {
-        // //     const order = req.body;
-        // //     const result = await orderCollection.insertOne(order);
-        // //     res.send(result);
-        // // });
 
 
 
